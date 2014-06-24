@@ -175,7 +175,7 @@ if has("gui_running")
     set guioptions=
     highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
     if has('unix') && !has('macunix') && !has('win32unix')
-        set guifont=Meslo\ LG\ S\ for\ Powerline\ 11
+        set guifont=Menlo\ for\ Powerline\ 10
         set lines=40 columns=100                            " Window dimensions
         compiler gcc
     elseif has("macunix")

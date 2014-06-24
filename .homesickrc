@@ -1,0 +1,2 @@
+# Update or install for the first time plugins
+`vim +BundleInstall! +BundleClean +qall`

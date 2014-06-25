@@ -356,3 +356,7 @@ let delimitMate_expand_cr = 1
 " Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
 set pastetoggle=<F2> 
 
+
+" Core Vim Course (04-dot-formula-with-range)
+xnoremap . :normal .<CR>
+

@@ -172,7 +172,7 @@ colorscheme Tomorrow-Night-Eighties
 if has("gui_running")
     let g:airline_powerline_fonts = 1
     "set guioptions=aegim
-    set guioptions=
+    set guioptions=agi
     highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10

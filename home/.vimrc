@@ -26,28 +26,40 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
-" Para vim-snipmate
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/vim-easy-align'
+
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'plasticboy/vim-markdown'
-" Track the engine.
+" Track the engine. Por que se integran con YouCompleteMe, snipMate no!
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+
+" Para que funcione vim-snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Yggdroot/indentLine'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mbbill/undotree'
+Plugin 'mileszs/ack.vim'
 Plugin 'wikitopian/hardmode'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,6 +77,13 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " END VUNDLE DEFAULTS ---------------------------------------------------------
+
+" Source support_function.vim to support vim-snippets. De spf13-vim
+" .vimrc.bundles
+if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
+    source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+endif
+
 
 " AUTOCOMANDS -----------------------------------------------------------------
 " Remove any trailing whitespace that is in the file

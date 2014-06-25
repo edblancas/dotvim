@@ -1,2 +1,4 @@
+# Clone Vundle.vim
+`git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim`
 # Update or install for the first time plugins
 `vim +BundleInstall! +BundleClean +qall`

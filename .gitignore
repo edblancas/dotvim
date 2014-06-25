@@ -1,2 +1,16 @@
+Created by http://www.gitignore.io
+
+### vim ###
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+### mac os ###
+.DS_Store
+
+# Vundle.vim stuff
 home/.vim/bundle/
 !home/.vim/bundle/Vundle.vim

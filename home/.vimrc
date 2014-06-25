@@ -60,6 +60,8 @@ Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

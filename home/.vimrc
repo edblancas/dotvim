@@ -366,8 +366,10 @@ let delimitMate_expand_cr = 1
 
 " Pasting large amounts of text into Vim 
 " Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
-" NOTE: REVISAR CREO NO FUNCIONA BIEN EN LINUX
-" set pastetoggle=<F2> 
+" set pastetoggle=<F12> 
+" Asi funciona mejor, con el anterior tenia problemas en linux
+nmap <F12> :set paste!<CR>
+imap <F12> :set paste!<CR>
 
 " Core Vim Course (04-dot-formula-with-range)
 xnoremap . :normal .<CR>

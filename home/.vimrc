@@ -179,8 +179,6 @@ set cul
 " Use UTF-8 everywhere
 set encoding=utf-8
 
-colorscheme Tomorrow-Night-Eighties
-
 if has("gui_running")
     let g:airline_powerline_fonts = 1
     "set guioptions=aegim
@@ -196,6 +194,8 @@ if has("gui_running")
         set lines=80 columns=150                            " Window dimensions
     endif
 else
+    " Fix colors in terminal
+    set t_Co=256
     "* the separator used on the left side
     let g:airline_left_sep=''
     "* the separator used on the right side
@@ -203,6 +203,8 @@ else
     " highlight LineNr ctermfg=darkcyan
     " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
 endif
+
+colorscheme Tomorrow-Night-Eighties
 
 " Show invisible characters
 "set list
@@ -375,7 +377,7 @@ xnoremap . :normal .<CR>
         let g:neocomplete#enable_at_startup = 1
         let g:neocomplete#enable_smart_case = 1
         let g:neocomplete#enable_auto_delimiter = 1
-        "let g:neocomplete#max_list = 15
+        let g:neocomplete#max_list = 30
 
         " Define dictionary.
         let g:neocomplete#sources#dictionary#dictionaries = {
@@ -396,7 +398,9 @@ xnoremap . :normal .<CR>
             smap <C-k> <Plug>(neosnippet_expand_or_jump)
             
             " <ESC> takes you out of insert mode
-            inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+            " NOTE: Causa problemas con las flechas en insert mode, aunque al
+            " parecer desactivandolo funciona igual que activado
+            "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
             " <CR> accepts first, then sends the <CR>
             inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
             " <Down> and <Up> cycle like <Tab> and <S-Tab>

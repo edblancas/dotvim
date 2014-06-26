@@ -366,7 +366,78 @@ let delimitMate_expand_cr = 1
 
 " Pasting large amounts of text into Vim 
 " Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
-set pastetoggle=<F2> 
+" NOTE: REVISAR CREO NO FUNCIONA BIEN EN LINUX
+" set pastetoggle=<F2> 
 
 " Core Vim Course (04-dot-formula-with-range)
 xnoremap . :normal .<CR>
+
+" neocomplete {
+        let g:acp_enableAtStartup = 0
+        let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#enable_smart_case = 1
+        let g:neocomplete#enable_auto_delimiter = 1
+        "let g:neocomplete#max_list = 15
+
+        " Define dictionary.
+        let g:neocomplete#sources#dictionary#dictionaries = {
+                    \ 'default' : '',
+                    \ 'vimshell' : $HOME.'/.vimshell_hist',
+                    \ 'scheme' : $HOME.'/.gosh_completions'
+                    \ }
+
+        " Define keyword.
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+        " Plugin key-mappings {
+            " These two lines conflict with the default digraph mapping of <C-K>
+            imap <C-k> <Plug>(neosnippet_expand_or_jump)
+            smap <C-k> <Plug>(neosnippet_expand_or_jump)
+            
+            " <ESC> takes you out of insert mode
+            inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+            " <CR> accepts first, then sends the <CR>
+            inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+            " <Down> and <Up> cycle like <Tab> and <S-Tab>
+            inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+            inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
+            " Jump up and down the list
+            inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+            inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+            " <TAB>: completion.
+            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+            " Courtesy of Matteo Cavalleri
+
+            function! CleverTab()
+                if pumvisible()
+                    return "\<C-n>"
+                endif 
+                let substr = strpart(getline('.'), 0, col('.') - 1)
+                let substr = matchstr(substr, '[^ \t]*$')
+                if strlen(substr) == 0
+                    " nothing to match on empty string
+                    return "\<Tab>"
+                else
+                    " existing text matching
+                    if neosnippet#expandable_or_jumpable()
+                        return "\<Plug>(neosnippet_expand_or_jump)"
+                    else
+                        return neocomplete#start_manual_complete()
+                    endif
+                endif
+            endfunction
+
+            imap <expr> <Tab> CleverTab()
+        " }
+
+        " Enable heavy omni completion.
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+        let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'  
+    "}

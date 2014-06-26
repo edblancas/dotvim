@@ -29,6 +29,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-eunuch'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
@@ -36,16 +38,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/vim-easy-align'
 
-Plugin 'Valloric/YouCompleteMe'
-" Track the engine. Por que se integran con YouCompleteMe, snipMate no!
-Plugin 'SirVer/ultisnips'
+Plugin 'Shougo/vimshell.vim'
+
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-
-" Para que funcione vim-snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
@@ -80,12 +79,9 @@ filetype plugin indent on    " required
 
 " END VUNDLE DEFAULTS ---------------------------------------------------------
 
-" Source support_function.vim to support vim-snippets. De spf13-vim
-" .vimrc.bundles
-if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
-    source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
-endif
-
+" NEOCOMPLETE
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 
 " AUTOCOMANDS -----------------------------------------------------------------
 " Remove any trailing whitespace that is in the file
@@ -231,10 +227,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_map = ''
 let g:ctrlp_follow_symlinks = 1
 
-" NERDTree---------------------------------------------------------------------
-let NERDTreeChDirMode=2
-let g:NERDTreeMinimalUI=1
-
 " MAPPINGS --------------------------------------------------------------------
 " Mapleader
 let mapleader = ","
@@ -295,9 +287,9 @@ map <C-p> <nop>
 map <Leader><Tab> :b#<CR>
 " Leader + n: New buffer
 map <Leader>n :new<CR>
-" Before / next buffer navigation using ctrl + p / ctrl + n
-map <C-p> :bprev<CR>
-map <C-n> :bnext<CR>
+" NOTE: Se utiliza tpope/unimpared [b y ]b
+"map <C-B>p :bprev<CR>
+"map <C-b>n :bnext<CR>
 " Close current buffer
 map <Leader>d :bd<CR>
 " map <Leader>d :q<CR>
@@ -376,7 +368,5 @@ let delimitMate_expand_cr = 1
 " Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
 set pastetoggle=<F2> 
 
-
 " Core Vim Course (04-dot-formula-with-range)
 xnoremap . :normal .<CR>
-

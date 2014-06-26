@@ -79,10 +79,6 @@ filetype plugin indent on    " required
 
 " END VUNDLE DEFAULTS ---------------------------------------------------------
 
-" NEOCOMPLETE
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-
 " AUTOCOMANDS -----------------------------------------------------------------
 " Remove any trailing whitespace that is in the file
 "autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -366,10 +362,10 @@ let delimitMate_expand_cr = 1
 
 " Pasting large amounts of text into Vim 
 " Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
-" set pastetoggle=<F12> 
-" Asi funciona mejor, con el anterior tenia problemas en linux
-nmap <F12> :set paste!<CR>
-imap <F12> :set paste!<CR>
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+nnoremap <F12> :set invpaste paste?<CR>
+imap <F12> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F12>
 
 " Core Vim Course (04-dot-formula-with-range)
 xnoremap . :normal .<CR>

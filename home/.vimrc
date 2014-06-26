@@ -36,7 +36,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'junegunn/vim-easy-align'
+Plugin 'godlygeek/tabular'
 
 Plugin 'Shougo/vimshell.vim'
 
@@ -61,6 +61,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
+Plugin 'gregsexton/gitv'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -204,7 +205,8 @@ else
     " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
 endif
 
-colorscheme Tomorrow-Night-Eighties
+" Favs: Tomorrow-Night, solarized (:set bg=dark, :set bg=light)
+colorscheme Tomorrow-Night
 
 " Show invisible characters
 "set list

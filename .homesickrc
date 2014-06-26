@@ -1,3 +1,5 @@
+# Homesick link
 # Clone Vundle.vim
 # Update or install for the first time plugins
-`git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && vim +BundleInstall! +BundleClean +qall`
+`homesick link dotvim-castle && git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && vim -c "execute \"PluginInstall\" | q | q"`
+

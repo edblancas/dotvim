@@ -54,7 +54,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/undotree'
 Plugin 'mileszs/ack.vim'
 Plugin 'wikitopian/hardmode'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'flazz/vim-colorschemes'
@@ -62,6 +61,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'gregsexton/gitv'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'tpope/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -479,3 +482,6 @@ inoremap kj <esc>
 "nnoremap <C-j> <C-w>j
 "nnoremap <C-k> <C-w>k
 "nnoremap <C-l> <C-w>l
+
+" Markdown
+let g:instant_markdown_autostart = 0

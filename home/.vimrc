@@ -468,3 +468,14 @@ nmap <Leader>a, :Tabularize /,<CR>
 vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" smash escape
+inoremap jk <esc>
+inoremap kj <esc>
+
+" Easy window nav
+" NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l

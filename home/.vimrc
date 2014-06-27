@@ -224,9 +224,6 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
     \ 'link': 'some_bad_symbolic_links',
     \ }
-"let g:ctrlp_extensions = [
-"   \ 'ctrlp-filetpe',
-"   \ ]
 let g:ctrlp_map = ''
 let g:ctrlp_follow_symlinks = 1
 
@@ -351,9 +348,14 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Markdown fixes---------------------------------------- 
-" Para detectar los md como markdown y no como modula2 que es el default
+" Para detectar los md como markdown y no como modula2 que es el default, lo
+" hace auto el plugin tpope/markdown.vim
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=mkd
+" GitHub Flavored Markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 " Add the following line to your .vimrc to disable folding
 let g:vim_markdown_folding_disabled=1

@@ -10,4 +10,4 @@ fi
 echo '--> Installing vim plugins with vundle...' < `tty` > `tty`
 vim +PluginInstall! +PluginClean +qall < `tty` > `tty`
 
-echo '--> Done! Happy Viming! :x' < `tty` > `tty`
+echo '--> Done! Happy Vimming! :x' < `tty` > `tty`

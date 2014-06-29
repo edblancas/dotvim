@@ -35,7 +35,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'godlygeek/tabular'
 
 Plugin 'Shougo/vimshell.vim'
@@ -64,7 +63,6 @@ Plugin 'gregsexton/gitv'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-markdown'
-"Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -227,6 +225,8 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_map = ''
 let g:ctrlp_follow_symlinks = 1
 
+let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
+
 " MAPPINGS --------------------------------------------------------------------
 " Mapleader
 let mapleader = ","
@@ -253,11 +253,9 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 " CtrlP for buffers - replace Command-T map
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 " CtrlP for tags
-silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>T :CtrlPBufTagAll<CR>
 " CntrlP for mru
 silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
-" CtrlP for filetype, se nececita el plugin!
-" silent! nnoremap <unique> <silent> <Leader>f :CtrlPFiletype<CR>
 
 " remove whitespaces before writing a file
 function! <SID>RemoveWhitespaces()
@@ -302,7 +300,7 @@ map <Leader>h :hide<CR>
 
 " Hide search highlight
 if exists(":nohls")
-  nmap <silent><C-h> :nohls<CR>  
+  nmap <silent><C-h> :nohls<CR>
   "map <silent><Leader>h :nohls<CR>
 endif
 
@@ -311,11 +309,9 @@ nnoremap <C-J> mao<Esc>`a
 nnoremap <C-K> maO<Esc>`a
 
 " NerdTree {
-    map <C-e> <plug>NERDTreeTabsToggle<CR>
-    " Open NERDTree
+    map <Leader>e :NERDTreeToggle<CR>
     map <Leader>L :NERDTree<CR>
-    map <leader>e :NERDTreeFind<CR>
-    nmap <leader>nt :NERDTreeFind<CR>
+    map <leadernt :NERDTreeFind<CR>
 
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']

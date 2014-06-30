@@ -196,6 +196,8 @@ if has("gui_running")
         " Put first mac because otherwise enter in the unix option
         set guifont=Menlo\ for\ Powerline:h14
         set lines=80 columns=150                            " Window dimensions
+        " Transparencia solo en macvim
+        set transparency=5
     endif
 else
     " Fix colors in terminal

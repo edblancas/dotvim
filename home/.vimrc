@@ -63,6 +63,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-markdown'
+Plugin 'majutsushi/tagbar'
 "Plugin 'myusuf3/numbers.vim'
 
 " All of your Plugins must be added before the following line
@@ -254,7 +255,7 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 " CtrlP for buffers - replace Command-T map
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 " CtrlP for tags
-silent! nnoremap <unique> <silent> <Leader>T :CtrlPBufTagAll<CR>
+silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
 " CntrlP for mru
 silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
 
@@ -271,7 +272,7 @@ endfunction
 
 " mapping to generate tags file
 function! FlushEnvironment()
-  silent! exe ":!ctags -R"
+  silent! exe ":!ctags -R ."
 endfunction
 silent! nnoremap <silent> TT :call FlushEnvironment()<CR>
 
@@ -484,3 +485,6 @@ inoremap kj <esc>
 
 " Markdown
 let g:instant_markdown_autostart = 0
+
+" Tagbar Plugin
+nnoremap <silent> <Leader>t :TagbarToggle<CR>

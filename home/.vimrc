@@ -64,6 +64,7 @@ Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-markdown'
 Plugin 'majutsushi/tagbar'
+Plugin 'Shougo/vimproc.vim'
 "Plugin 'myusuf3/numbers.vim'
 
 " All of your Plugins must be added before the following line

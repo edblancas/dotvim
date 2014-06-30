@@ -258,7 +258,7 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 " CtrlP for buffers - replace Command-T map
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 " CtrlP for tags
-silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>t :CtrlPTag<CR>
 " CntrlP for mru
 silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
 
@@ -490,4 +490,4 @@ inoremap kj <esc>
 let g:instant_markdown_autostart = 0
 
 " Tagbar Plugin
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <Leader>T :TagbarToggle<CR>

@@ -63,7 +63,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-markdown'
-Plugin 'myusuf3/numbers.vim'
+"Plugin 'myusuf3/numbers.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

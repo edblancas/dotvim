@@ -258,7 +258,8 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 " CtrlP for buffers - replace Command-T map
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 " CtrlP for tags
-silent! nnoremap <unique> <silent> <Leader>t :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
 " CntrlP for mru
 silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
 
@@ -310,8 +311,9 @@ if exists(":nohls")
 endif
 
 " New line down and up the cursor
-nnoremap <C-J> mao<Esc>`a
-nnoremap <C-K> maO<Esc>`a
+" Handled by de unimpared.vim
+"nnoremap <C-J> mao<Esc>`a
+"nnoremap <C-K> maO<Esc>`a
 
 " NerdTree {
     map <Leader>e :NERDTreeToggle<CR>
@@ -490,4 +492,8 @@ inoremap kj <esc>
 let g:instant_markdown_autostart = 0
 
 " Tagbar Plugin
-nnoremap <silent> <Leader>T :TagbarToggle<CR>
+"nnoremap <silent> <Leader>] :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+" Only autocomplete tags local buffers
+set complete-=i

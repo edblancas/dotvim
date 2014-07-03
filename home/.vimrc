@@ -47,7 +47,7 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/undotree'
@@ -65,6 +65,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-markdown'
 Plugin 'majutsushi/tagbar'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'chrisbra/NrrwRgn'
 "Plugin 'myusuf3/numbers.vim'
 
 " All of your Plugins must be added before the following line
@@ -189,14 +190,13 @@ if has("gui_running")
     "set guioptions=aegim
     set guioptions=agi
     highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
+    set lines=999 columns=9999
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
-        set lines=40 columns=100                            " Window dimensions
         compiler gcc
     elseif has("macunix")
         " Put first mac because otherwise enter in the unix option
         set guifont=Menlo\ for\ Powerline:h14
-        set lines=80 columns=150                            " Window dimensions
         " Transparencia solo en macvim
         set transparency=5
     endif
@@ -497,3 +497,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " Only autocomplete tags local buffers
 set complete-=i
+
+" Delete a word to the right
+imap <C-d> <C-o>diw

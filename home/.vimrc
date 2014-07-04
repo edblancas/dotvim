@@ -274,9 +274,10 @@ endfunction
 " mapping to remove whitespaces
 " nnoremap <silent> <S-Space> :call <SID>RemoveWhitespaces()<CR>
 
+" CTAGS
 " mapping to generate tags file
 function! FlushEnvironment()
-  silent! exe ":!ctags -R ."
+  silent! exe ":!ctags -R . --exclude=\".git\""
 endfunction
 silent! nnoremap <silent> TT :call FlushEnvironment()<CR>
 

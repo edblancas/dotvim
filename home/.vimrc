@@ -66,6 +66,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'majutsushi/tagbar'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'chrisbra/NrrwRgn'
+Plugin 'sjl/gundo.vim'
 "Plugin 'myusuf3/numbers.vim'
 
 " All of your Plugins must be added before the following line
@@ -189,7 +190,7 @@ if has("gui_running")
     let g:airline_powerline_fonts = 1
     "set guioptions=aegim
     set guioptions=agi
-    highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
+    "highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
     set lines=999 columns=9999
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
@@ -198,7 +199,7 @@ if has("gui_running")
         " Put first mac because otherwise enter in the unix option
         set guifont=Menlo\ for\ Powerline:h14
         " Transparencia solo en macvim
-        set transparency=5
+        set transparency=0
     endif
 else
     " Fix colors in terminal
@@ -211,8 +212,8 @@ else
     " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
 endif
 
-" Favs: Tomorrow-Night, solarized (:set bg=dark, :set bg=light)
-colorscheme Tomorrow-Night
+" Favs: Tomorrow-Night, Tomorrow, solarized (:set bg=dark, :set bg=light)
+colorscheme Tomorrow
 
 " Show invisible characters
 "set list
@@ -403,9 +404,8 @@ xnoremap . :normal .<CR>
         let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
         " Plugin key-mappings {
-            " These two lines conflict with the default digraph mapping of <C-K>
-            imap <C-k> <Plug>(neosnippet_expand_or_jump)
-            smap <C-k> <Plug>(neosnippet_expand_or_jump)
+            imap <D-k> <Plug>(neosnippet_expand_or_jump)
+            smap <D-k> <Plug>(neosnippet_expand_or_jump)
             
             " <ESC> takes you out of insert mode
             " NOTE: Causa problemas con las flechas en insert mode, aunque al
@@ -478,8 +478,9 @@ nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 " smash escape
-inoremap jk <esc>
-inoremap kj <esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
+inoremap jj <Esc>
 
 " Easy window nav
 " NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS
@@ -500,3 +501,7 @@ set complete-=i
 
 " Delete a word to the right
 imap <C-d> <C-o>diw
+
+" Screen lines
+nnoremap j gj
+nnoremap k gk

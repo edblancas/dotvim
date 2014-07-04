@@ -498,8 +498,8 @@ let g:instant_markdown_autostart = 0
 "nnoremap <silent> <Leader>] :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-" Only autocomplete tags local buffers
-set complete-=i
+" Another benefit of using ctags is that you can use it for tab completion. I find that tab completion becomes unusably slow in a large project if you’re finding keywords from open buffers, but you can tell Vim to only use the current file and ctags when finding keywords (http://robots.thoughtbot.com/integrating-vim-into-your-life)
+set complete=.,t
 
 " Delete a word to the right
 imap <C-d> <C-o>diw

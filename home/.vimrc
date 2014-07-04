@@ -276,10 +276,8 @@ endfunction
 
 " CTAGS
 " mapping to generate tags file
-function! FlushEnvironment()
-  silent! exe ":!ctags -R . --exclude=\".git\""
-endfunction
-silent! nnoremap <silent> TT :call FlushEnvironment()<CR>
+:set tags=./tags;~/Documents/Glider/Multicurrency/GitHub/FinancialPlatform/
+silent! nnoremap <silent> TT :!~/.vim/bin/ctags-proj.sh<CR>
 
 "
 " Custom key mapping

@@ -45,7 +45,7 @@ Plugin 'Shougo/neosnippet-snippets'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
@@ -403,8 +403,9 @@ xnoremap . :normal .<CR>
         let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
         " Plugin key-mappings {
-            imap <D-k> <Plug>(neosnippet_expand_or_jump)
-            smap <D-k> <Plug>(neosnippet_expand_or_jump)
+            " These two lines conflict with the default digraph mapping of <C-K>
+            imap <C-k> <Plug>(neosnippet_expand_or_jump)
+            smap <C-k> <Plug>(neosnippet_expand_or_jump)
             
             " <ESC> takes you out of insert mode
             " NOTE: Causa problemas con las flechas en insert mode, aunque al
@@ -413,7 +414,7 @@ xnoremap . :normal .<CR>
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
             " El de arriba causa problemas con delimitMate para expandir el CR
-            imap <expr><CR> pumvisible() ? "\<C-y>\<CR>" : "<Plug>delimitMateCR"
+            imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : '<Plug>delimitMateCR'
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -510,3 +511,9 @@ nnoremap k gk
 " DelimitMate
 let g:delimitMate_expand_cr = 1
 "let g:delimitMate_expand_space = 1
+
+" Copy the path of the actual file
+function! MeGetFilePath()
+    let @+ = expand("%:p")
+    let @* = expand("%:p")
+endfunction

@@ -276,7 +276,7 @@ endfunction
 
 " CTAGS
 " mapping to generate tags file
-:set tags=./tags;~/Documents/Glider/Multicurrency/GitHub/FinancialPlatform/
+:set tags=./tags,tags;
 silent! nnoremap <silent> TT :!~/.vim/bin/ctags-proj.sh<CR>
 
 "
@@ -317,7 +317,7 @@ endif
 " NerdTree {
     map <Leader>e :NERDTreeToggle<CR>
     map <Leader>L :NERDTree<CR>
-    map <leadernt :NERDTreeFind<CR>
+    map <leader>nt :NERDTreeFind<CR>
 
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']

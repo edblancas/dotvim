@@ -50,7 +50,6 @@ Plugin 'Raimondi/delimitMate'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mbbill/undotree'
 Plugin 'mileszs/ack.vim'
 Plugin 'wikitopian/hardmode'
 Plugin 'rizzatti/funcoo.vim'
@@ -359,6 +358,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+    autocmd FileType markdown,vim let b:loaded_delimitMate=1
 augroup END
 
 " Add the following line to your .vimrc to disable folding
@@ -412,7 +412,9 @@ xnoremap . :normal .<CR>
             " parecer desactivandolo funciona igual que activado
             "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
             " <CR> accepts first, then sends the <CR>
-            inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+            "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+            " El de arriba causa problemas con delimitMate para expandir el CR
+            imap <expr><CR> pumvisible() ? "\<C-y>\<CR>" : "<Plug>delimitMateCR"
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -505,3 +507,7 @@ imap <C-d> <C-o>diw
 " Screen lines
 nnoremap j gj
 nnoremap k gk
+
+" DelimitMate
+let g:delimitMate_expand_cr = 1
+"let g:delimitMate_expand_space = 1

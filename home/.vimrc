@@ -413,8 +413,6 @@ xnoremap . :normal .<CR>
             "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-            " El de arriba causa problemas con delimitMate para expandir el CR
-            imap <expr> <CR> pumvisible() ? neocomplete#close_popup() : '<Plug>delimitMateCR'
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -517,3 +515,6 @@ function! MeGetFilePath()
     let @+ = expand("%:p")
     let @* = expand("%:p")
 endfunction
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>

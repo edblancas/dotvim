@@ -204,11 +204,18 @@ else
     " Fix colors in terminal
     set t_Co=256
     "* the separator used on the left side
-    let g:airline_left_sep=''
+    "let g:airline_left_sep=''
     "* the separator used on the right side
-    let g:airline_right_sep=''
+    "let g:airline_right_sep=''
     " highlight LineNr ctermfg=darkcyan
     " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
+    if has('unix') && !has('macunix') && !has('win32unix')
+    elseif has("macunix")
+        let g:airline_powerline_fonts = 1
+        set guifont=Menlo\ for\ Powerline:h14
+        set breakindent
+        set breakindentopt=sbr,shift:4
+    endif
 endif
 
 " Favs: Tomorrow-Night, Tomorrow, solarized (:set bg=dark, :set bg=light)

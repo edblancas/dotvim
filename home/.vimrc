@@ -186,7 +186,9 @@ set cul
 set encoding=utf-8
 
 set breakindent
-set breakindentopt=sbr,shift:4
+"set breakindentopt=sbr,shift:4
+" Para que el shift del indent sea utomatico con el de la opt shiftwidth
+let &breakindentopt="sbr,shift:&shiftwidth"
 
 let g:airline_powerline_fonts = 1
 

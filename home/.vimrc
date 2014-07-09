@@ -186,9 +186,10 @@ set cul
 set encoding=utf-8
 
 set breakindent
-"set breakindentopt=sbr,shift:4
-" Para que el shift del indent sea utomatico con el de la opt shiftwidth
-let &breakindentopt="sbr,shift:&shiftwidth"
+set breakindentopt=sbr,shift:4
+" Para que el shift del indent sea utomatico con el de la opt shiftwidth, no
+" funciona no setea la opcion al cargar vimrc
+"let &breakindentopt="sbr,shift:&shiftwidth"
 
 let g:airline_powerline_fonts = 1
 

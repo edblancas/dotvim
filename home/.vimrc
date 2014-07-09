@@ -185,8 +185,12 @@ set cul
 " Use UTF-8 everywhere
 set encoding=utf-8
 
+set breakindent
+set breakindentopt=sbr,shift:4
+
+let g:airline_powerline_fonts = 1
+
 if has("gui_running")
-    let g:airline_powerline_fonts = 1
     "set guioptions=aegim
     set guioptions=agi
     "highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
@@ -210,11 +214,9 @@ else
     " highlight LineNr ctermfg=darkcyan
     " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
     if has('unix') && !has('macunix') && !has('win32unix')
+        set guifont=Menlo\ for\ Powerline\ 10
     elseif has("macunix")
-        let g:airline_powerline_fonts = 1
         set guifont=Menlo\ for\ Powerline:h14
-        set breakindent
-        set breakindentopt=sbr,shift:4
     endif
 endif
 

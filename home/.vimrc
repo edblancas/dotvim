@@ -185,6 +185,8 @@ set cul
 " Use UTF-8 everywhere
 set encoding=utf-8
 
+let &showbreak = '↳'
+"let &showbreak = '↪'
 set breakindent
 set breakindentopt=sbr,shift:4
 " Para que el shift del indent sea utomatico con el de la opt shiftwidth, no

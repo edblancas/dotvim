@@ -297,7 +297,7 @@ silent! nnoremap <silent> TT :!~/.vim/bin/ctags-proj.sh<CR>
 " Custom key mapping
 " ------------------
 "
-map <C-p> <nop>
+"map <C-p> <nop>
 
 " BUFFERS MAPPING ----------------------------------------
 " Leader + Tab: Switching to the previously edited buffer
@@ -343,12 +343,6 @@ endif
     let g:nerdtree_tabs_open_on_gui_startup=0
 " }
 " 
-
-" Force yourself to stop using arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 
 " Override the read-only permissions
 cmap w!! %!sudo tee > /dev/null %
@@ -535,3 +529,13 @@ endfunction
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
+
+" Force yourself to stop using arrow keys
+map   <Up>     <Nop>
+map   <Down>   <Nop>
+map   <Left>   <Nop>
+map   <Right>  <Nop>
+imap  <Up>     <Nop>
+imap  <Down>   <Nop>
+imap  <Left>   <Nop>
+imap  <Right>  <Nop>

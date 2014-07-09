@@ -541,3 +541,15 @@ imap  <Left>   <Nop>
 imap  <Right>  <Nop>
 
 set scrolloff=5
+
+"map up/down arrow keys to unimpaired commands
+nmap <Up> [e
+nmap <Down> ]e
+vmap <Up> [egv
+vmap <Down> ]egv
+
+""map left/right arrow keys to indendation
+nmap <Left> <<
+nmap <Right> >>
+vmap <Left> <gv
+vmap <Right> >gv

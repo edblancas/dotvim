@@ -492,9 +492,12 @@ nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 " smash escape
+inoremap <esc> <nop>
 inoremap jk <Esc>
 inoremap kj <Esc>
 inoremap jj <Esc>
+inoremap kl <Esc>
+inoremap lk <Esc>
 
 " Easy window nav
 " NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS

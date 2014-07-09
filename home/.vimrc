@@ -539,3 +539,5 @@ imap  <Up>     <Nop>
 imap  <Down>   <Nop>
 imap  <Left>   <Nop>
 imap  <Right>  <Nop>
+
+set scrolloff=5

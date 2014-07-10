@@ -16,9 +16,6 @@ source ~/.vim/utils/bundles.vim
 " preserved while the buffer is open.
 set hidden
 
-" This shows what you are typing as a command.  I love this!
-set showcmd
-
 " Use syntax for folds
 set foldmethod=syntax
 
@@ -28,29 +25,19 @@ filetype plugin on
 filetype indent on
 syntax enable
 
-" Who doesn't like autoindent?
-set autoindent          " set the cursor at same indent as line above
 set smartindent         " try to be smart about indenting (C-style)
 
 " Spaces are better than a tab character
 set expandtab           " expand <Tab>s with spaces; death to tabs!
-set smarttab            " smart tab insert and delete, when <BS> delete a shiftwidth
 
 " Who wants an 8 character tab?  Not me!
 set shiftwidth=4        " spaces for each step of (auto)indent
 set softtabstop=4       " set virtual tab stop (compat for 8-wide tabs)
 
-" Cool tab completion stuff
-set wildmenu                " turn on wild menu :e <Tab>
 set wildmode=list:longest,full      " set wildmenu to list choice
 
 " Enable mouse support in console
 set mouse=a
-
-" For problems with backspace and for delete line breaks, inserted
-" indentation, or the place where insert mode started (>= vim 7.3),
-" for erlier versions: set backspace=2
-" set backspace=indent,eol,startaut
 
 " Got backspace?
 set backspace=2                     " equiv to :set backspace=indent,eol,start
@@ -64,9 +51,6 @@ set ignorecase
 " And so is Artificial Intellegence! Ignore case if search pattern is all in
 " lowercase, case sensitive otherwise
 set smartcase
-
-" Incremental searching is sexy
-set incsearch
 
 " Highlight things that we find with the search
 set hlsearch
@@ -83,10 +67,6 @@ set noswapfile
 
 
 " LOOK AN FEEL ----------------------------------------------------------------
-" Status line gnarliness, siempre muestra el status line
-set laststatus=2
-" Status line modificada, cuando no esta activado el plugin de vim-powerline
-"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 " This highlights the background in a subtle red for text that goes over the 80 column limit, for vim <= 7.2, in vim 7.3 is colorcolumn=80
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
@@ -95,9 +75,6 @@ set colorcolumn=100
 
  " highlight current line
 set cul
-
-" Use UTF-8 everywhere
-set encoding=utf-8
 
 let &showbreak = '↳'
 "let &showbreak = '↪'
@@ -124,8 +101,8 @@ if has("gui_running")
         set transparency=0
     endif
 else
-    " Fix colors in terminal
-    set t_Co=256
+    " Fix colors in terminal, vim-sensible
+    "set t_Co=256
     "* the separator used on the left side
     "let g:airline_left_sep=''
     "* the separator used on the right side
@@ -141,13 +118,6 @@ endif
 
 " Favs: Tomorrow-Night, Tomorrow, solarized (:set bg=dark, :set bg=light)
 colorscheme Tomorrow
-
-" Show invisible characters
-"set list
-"set list listchars=tab:▸–,trail:·,nbsp:¬
-
-" History of the command line, def 20 
-set history=200
 
 " CtrlP -----------------------------------------------------------------------
 let g:ctrlp_custom_ignore = {
@@ -203,8 +173,6 @@ endfunction
 " nnoremap <silent> <S-Space> :call <SID>RemoveWhitespaces()<CR>
 
 " CTAGS
-" mapping to generate tags file
-:set tags=./tags,tags;
 silent! nnoremap <silent> TT :!~/.vim/utils/ctags-proj.sh<CR>
 
 "
@@ -230,12 +198,6 @@ map <Leader>D :bd!<CR>
 map <Leader>W :w \| bd<CR>
 " Hide current buffer
 map <Leader>h :hide<CR>
-
-" Hide search highlight
-if exists(":nohls")
-  nmap <silent><C-h> :nohls<CR>
-  "map <silent><Leader>h :nohls<CR>
-endif
 
 " New line down and up the cursor
 " Handled by de unimpared.vim
@@ -421,9 +383,6 @@ let g:instant_markdown_autostart = 0
 "nnoremap <silent> <Leader>] :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-" Another benefit of using ctags is that you can use it for tab completion. I find that tab completion becomes unusably slow in a large project if you’re finding keywords from open buffers, but you can tell Vim to only use the current file and ctags when finding keywords (http://robots.thoughtbot.com/integrating-vim-into-your-life)
-set complete=.,t
-
 " Delete a word to the right
 imap <C-d> <C-o>diw
 
@@ -454,8 +413,6 @@ inoremap  <Down>   <Nop>
 inoremap  <Left>   <Nop>
 inoremap  <Right>  <Nop>
 
-set scrolloff=5
-
 "map up/down arrow keys to unimpaired commands 
 "NO FUNCIONAN EN LA TERMINAL EN MAC
 "nmap <Up> [e
@@ -468,3 +425,10 @@ set scrolloff=5
 "nmap <Right> >>
 "vmap <Left> <gv
 "vmap <Right> >gv
+
+" set shell lo hace vim-sensible lo ponen en bash hay que ver para ponerlo en
+" zsh
+
+" vim-sensible lo pone solo si tiene 'latin1' y es gui_running por eso lo
+" pongo aqui por el ariline
+set encoding=utf-8

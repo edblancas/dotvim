@@ -295,6 +295,8 @@ xnoremap . :normal .<CR>
             "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+            " <CR> acepta la seleccion
+            inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -302,15 +304,14 @@ xnoremap . :normal .<CR>
             inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
             inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
             " <TAB>: completion.
-            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+            "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+            "inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
             " Courtesy of Matteo Cavalleri
-
             function! CleverTab()
-                if pumvisible()
-                    return "\<C-n>"
-                endif 
+                "if pumvisible()
+                    "return "\<C-n>"
+                "endif 
                 let substr = strpart(getline('.'), 0, col('.') - 1)
                 let substr = matchstr(substr, '[^ \t]*$')
                 if strlen(substr) == 0
@@ -359,13 +360,13 @@ vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
-" smash escape
-inoremap <esc> <nop>
+"! smash escape, habria que ser consistente y ponerlo en los demas modos
+"inoremap <esc> <nop>
 inoremap jk <Esc>
 inoremap kj <Esc>
-inoremap jj <Esc>
-inoremap kl <Esc>
-inoremap lk <Esc>
+"inoremap jj <Esc>
+"inoremap kl <Esc>
+"inoremap lk <Esc>
 
 " Easy window nav
 " NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS
@@ -402,14 +403,14 @@ endfunction
 nnoremap <F5> :GundoToggle<CR>
 
 " Force yourself to stop using arrow keys
-noremap   <Up>     <Nop>
-noremap   <Down>   <Nop>
-noremap   <Left>   <Nop>
-noremap   <Right>  <Nop>
-inoremap  <Up>     <Nop>
-inoremap  <Down>   <Nop>
-inoremap  <Left>   <Nop>
-inoremap  <Right>  <Nop>
+"noremap   <Up>     <Nop>
+"noremap   <Down>   <Nop>
+"noremap   <Left>   <Nop>
+"noremap   <Right>  <Nop>
+"inoremap  <Up>     <Nop>
+"inoremap  <Down>   <Nop>
+"inoremap  <Left>   <Nop>
+"inoremap  <Right>  <Nop>
 
 "map up/down arrow keys to unimpaired commands 
 "NO FUNCIONAN EN LA TERMINAL EN MAC

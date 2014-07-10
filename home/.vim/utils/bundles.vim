@@ -56,7 +56,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'wikitopian/hardmode'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
-Plugin 'flazz/vim-colorschemes'
+"Incluye colores que se agregan en otros repos (vim-tomorrow-theme)
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
@@ -70,6 +71,7 @@ Plugin 'chrisbra/NrrwRgn'
 Plugin 'sjl/gundo.vim'
 "Plugin 'myusuf3/numbers.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

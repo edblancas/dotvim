@@ -431,6 +431,9 @@ inoremap  <Right>  <Nop>
 " pongo aqui por el ariline
 set encoding=utf-8
 
+" Para que se vea el branch, si 1 entonces solo el nombre del archivo
+let g:airline_inactive_collapse=0
+
 " Patch a theme airline
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)

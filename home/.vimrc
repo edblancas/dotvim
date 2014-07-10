@@ -101,8 +101,6 @@ if has("gui_running")
         set transparency=0
     endif
 else
-    " Fix colors in terminal, vim-sensible
-    "set t_Co=256
     "* the separator used on the left side
     "let g:airline_left_sep=''
     "* the separator used on the right side
@@ -432,3 +430,13 @@ inoremap  <Right>  <Nop>
 " vim-sensible lo pone solo si tiene 'latin1' y es gui_running por eso lo
 " pongo aqui por el ariline
 set encoding=utf-8
+
+" Patch a theme airline
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  if g:airline_theme == 'tomorrow'
+    for colors in values(a:palette.inactive)
+      let colors[2] = 102
+    endfor
+  endif
+endfunction

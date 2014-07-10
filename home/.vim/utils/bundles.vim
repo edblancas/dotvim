@@ -69,6 +69,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'chrisbra/NrrwRgn'
 Plugin 'sjl/gundo.vim'
 "Plugin 'myusuf3/numbers.vim'
+Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

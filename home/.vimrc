@@ -531,25 +531,26 @@ endfunction
 nnoremap <F5> :GundoToggle<CR>
 
 " Force yourself to stop using arrow keys
-map   <Up>     <Nop>
-map   <Down>   <Nop>
-map   <Left>   <Nop>
-map   <Right>  <Nop>
-imap  <Up>     <Nop>
-imap  <Down>   <Nop>
-imap  <Left>   <Nop>
-imap  <Right>  <Nop>
+noremap   <Up>     <Nop>
+noremap   <Down>   <Nop>
+noremap   <Left>   <Nop>
+noremap   <Right>  <Nop>
+inoremap  <Up>     <Nop>
+inoremap  <Down>   <Nop>
+inoremap  <Left>   <Nop>
+inoremap  <Right>  <Nop>
 
 set scrolloff=5
 
-"map up/down arrow keys to unimpaired commands
-nmap <Up> [e
-nmap <Down> ]e
-vmap <Up> [egv
-vmap <Down> ]egv
+"map up/down arrow keys to unimpaired commands 
+"NO FUNCIONAN EN LA TERMINAL EN MAC
+"nmap <Up> [e
+"nmap <Down> ]e
+"vmap <Up> [egv
+"vmap <Down> ]egv
 
 ""map left/right arrow keys to indendation
-nmap <Left> <<
-nmap <Right> >>
-vmap <Left> <gv
-vmap <Right> >gv
+"nmap <Left> <<
+"nmap <Right> >>
+"vmap <Left> <gv
+"vmap <Right> >gv

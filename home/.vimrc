@@ -444,3 +444,6 @@ function! AirlineThemePatch(palette)
     endfor
   endif
 endfunction
+
+" sensible.vim no lo setea bien
+set t_Co=256

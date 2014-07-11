@@ -295,8 +295,6 @@ xnoremap . :normal .<CR>
             "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-            " <CR> acepta la seleccion
-            inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -327,7 +325,27 @@ xnoremap . :normal .<CR>
                 endif
             endfunction
 
+            function! CleverCR()
+                "if pumvisible()
+                    "return "\<C-n>"
+                "endif 
+                let substr = strpart(getline('.'), 0, col('.') - 1)
+                let substr = matchstr(substr, '[^ \t]*$')
+                if strlen(substr) == 0
+                    " nothing to match on empty string
+                    return "\<CR>"
+                else
+                    " existing text matching
+                    if neosnippet#expandable_or_jumpable()
+                        return "\<Plug>(neosnippet_expand_or_jump)"
+                    else
+                        return neocomplete#start_manual_complete()
+                    endif
+                endif
+            endfunction
+            
             imap <expr> <Tab> CleverTab()
+            inoremap <expr> <CR> CleverCR()
         " }
 
         " Enable heavy omni completion.

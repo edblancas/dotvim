@@ -296,7 +296,7 @@ xnoremap . :normal .<CR>
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
             " <CR> acepta la seleccion
-            inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+            imap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : '<Plug>delimitMateCR'
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"

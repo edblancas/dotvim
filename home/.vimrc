@@ -245,21 +245,9 @@ augroup END
 " Add the following line to your .vimrc to disable folding
 let g:vim_markdown_folding_disabled=1
 
-" sirver/utilsnips---------------------------------------- 
-let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"let g:UltiSnipsListSnippets = '<c-tab>'
-
-" delimitMate
 let delimitMate_expand_cr = 1
 
-" Pasting large amounts of text into Vim 
-" Another great trick I read in a reddit comment is to use <C-r>+ to paste right from the OS paste board. Of course, this only works when running Vim locally (i.e. not over an SSH connection).
-" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
-nnoremap <F12> :set invpaste paste?<CR>
-imap <F12> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F12>
+set pastetoggle=<F2>
 
 " Core Vim Course (04-dot-formula-with-range)
 xnoremap . :normal .<CR>

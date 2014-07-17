@@ -149,15 +149,12 @@ nnoremap <leader>se <C-w><C-v><C-l>:e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " CtrlP Config --------------------------------------------------
-" CtrlP familiar to Command-T - replace  Command-T map
 silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
-" CtrlP for buffers - replace Command-T map
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
-" CtrlP for tags
 silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
-" CntrlP for mru
 silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
+silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
 
 " remove whitespaces before writing a file
 function! <SID>RemoveWhitespaces()

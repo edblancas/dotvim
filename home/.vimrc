@@ -310,7 +310,8 @@ xnoremap . :normal .<CR>
                     if neosnippet#expandable_or_jumpable()
                         return "\<Plug>(neosnippet_expand_or_jump)"
                     else
-                        return neocomplete#start_manual_complete()
+                        "return neocomplete#start_manual_complete()
+                        return "\<Tab>"
                     endif
                 endif
             endfunction

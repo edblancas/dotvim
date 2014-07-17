@@ -255,6 +255,7 @@ xnoremap . :normal .<CR>
         let g:neocomplete#enable_smart_case = 1
         let g:neocomplete#enable_auto_delimiter = 1
         let g:neocomplete#max_list = 30
+        let g:neocomplete#enable_auto_select = 1
 
         " Define dictionary.
         let g:neocomplete#sources#dictionary#dictionaries = {
@@ -281,7 +282,8 @@ xnoremap . :normal .<CR>
             " <CR> accepts first, then sends the <CR>
             "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
             " <CR> acepta la seleccion
-            imap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : '<Plug>delimitMateCR'
+            "imap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : '<Plug>delimitMateCR'
+            imap <expr> <CR> pumvisible() ? "\<C-y>" : "<Plug>delimitMateCR"
             " <Down> and <Up> cycle like <Tab> and <S-Tab>
             inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
             inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
@@ -294,9 +296,10 @@ xnoremap . :normal .<CR>
 
             " Courtesy of Matteo Cavalleri
             function! CleverTab()
-                "if pumvisible()
+                if pumvisible()
                     "return "\<C-n>"
-                "endif 
+                    return "\<C-y>"
+                endif 
                 let substr = strpart(getline('.'), 0, col('.') - 1)
                 let substr = matchstr(substr, '[^ \t]*$')
                 if strlen(substr) == 0
@@ -307,8 +310,7 @@ xnoremap . :normal .<CR>
                     if neosnippet#expandable_or_jumpable()
                         return "\<Plug>(neosnippet_expand_or_jump)"
                     else
-                        "return neocomplete#start_manual_complete()
-                        return "\<Tab>"
+                        return neocomplete#start_manual_complete()
                     endif
                 endif
             endfunction

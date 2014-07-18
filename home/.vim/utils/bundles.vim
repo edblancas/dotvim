@@ -53,6 +53,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'Shougo/context_filetype.vim'
 Plugin 'svermeulen/vim-easyclip'
 Plugin 'noahfrederick/vim-hemisu'
+Plugin 'tomasr/molokai'
 
 call vundle#end()            
 filetype plugin indent on   

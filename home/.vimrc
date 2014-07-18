@@ -60,7 +60,7 @@ if has("gui_running")
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
         compiler gcc
-    elseif has("macunix")
+    eMaÿClseif has("macunix")
         set guifont=Menlo\ for\ Powerline:h14
         set transparency=0
     endif
@@ -72,8 +72,16 @@ else
     endif
 endif
 
-colorscheme solarized
-set background=dark
+colorscheme Tomorrow
+set background=light
+
+" Tweak colorscheme
+highlight LineNr cterm=bold
+highlight CursorLineNr cterm=bold
+highlight Folded cterm=bold
+highlight Constant cterm=underline
+highlight Statement cterm=bold
+"highlight Comment cterm=italic
 
 " Mappings {{{1
 " Override defaults {{{2

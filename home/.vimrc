@@ -62,24 +62,6 @@ endif
 
 colorscheme Tomorrow
 
-" CtrlP -----------------------------------------------------------------------
-silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
-silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
-silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
-silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
-silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
-
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
-    \ 'link': 'some_bad_symbolic_links',
-    \ }
-let g:ctrlp_map = ''
-let g:ctrlp_follow_symlinks = 1
-
-let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
-
 " MAPPINGS --------------------------------------------------------------------
 let mapleader = ","
 
@@ -132,6 +114,24 @@ map <Leader>h :hide<CR>
 
 " Override the read-only permissions
 cmap w!! %!sudo tee > /dev/null %
+
+" CtrlP -----------------------------------------------------------------------
+silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
+silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
+silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
+silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
+silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
+
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+let g:ctrlp_map = ''
+let g:ctrlp_follow_symlinks = 1
+
+let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
 
 " Airline config---------------------------------------- 
 let g:airline_powerline_fonts = 1

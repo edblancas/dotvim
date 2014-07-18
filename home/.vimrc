@@ -1,112 +1,58 @@
 source ~/.vim/utils/bundles.vim
 
-" AUTOCOMANDS -----------------------------------------------------------------
-" Remove any trailing whitespace that is in the file
-"autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-
-" Automatically cd into the directory that the file is in
-"autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
-" Note: Cause conflicts when using tabs for the working dir
-"set autochdir
-
-" MISC SETTINGS ---------------------------------------------------------------
-" Hides buffers instead of closing them. This means that you can have
-" unwritten changes to a file and open a new file using :e, without being
-" forced to write or undo your changes first. Also, undo buffers and marks are
-" preserved while the buffer is open.
 set hidden
 
-" Use syntax for folds
 set foldmethod=syntax
 
-" Needed for Syntax Highlighting and stuff
 filetype on 
 filetype plugin on
 filetype indent on
 syntax enable
 
-set smartindent         " try to be smart about indenting (C-style)
+set smartindent         
 
-" Spaces are better than a tab character
-set expandtab           " expand <Tab>s with spaces; death to tabs!
+set expandtab           
+set shiftwidth=4        
+set softtabstop=4       
 
-" Who wants an 8 character tab?  Not me!
-set shiftwidth=4        " spaces for each step of (auto)indent
-set softtabstop=4       " set virtual tab stop (compat for 8-wide tabs)
+set wildmode=list:longest,full      
 
-set wildmode=list:longest,full      " set wildmenu to list choice
-
-" Enable mouse support in console
 set mouse=a
 
-" Got backspace?
-set backspace=2                     " equiv to :set backspace=indent,eol,start
-
-" Line Numbers PWN!
 set number
 
-" Ignoring case is a fun trick, ignore case while searching
 set ignorecase
-
-" And so is Artificial Intellegence! Ignore case if search pattern is all in
-" lowercase, case sensitive otherwise
 set smartcase
 
-" Highlight things that we find with the search
 set hlsearch
 
-" show matching brackets
 set showmatch
 
-" BACKUP ----------------------------------------------------------------------
-" You will have to create these directories first, vim will not create them for you.
 set nobackup
-"set backupdir=~/.vim/backup
-"set directory=~/.vim/tmp
 set noswapfile
 
 
 " LOOK AN FEEL ----------------------------------------------------------------
-
-" This highlights the background in a subtle red for text that goes over the 80 column limit, for vim <= 7.2, in vim 7.3 is colorcolumn=80
-"highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
 set colorcolumn=100
 
- " highlight current line
 set cul
 
 let &showbreak = '↳'
-"let &showbreak = '↪'
+
 set breakindent
 set breakindentopt=shift:4,sbr
-" Para que el shift del indent sea utomatico con el de la opt shiftwidth, no
-" funciona no setea la opcion al cargar vimrc
-"let &breakindentopt="sbr,shift:&shiftwidth"
-
-let g:airline_powerline_fonts = 1
 
 if has("gui_running")
-    "set guioptions=aegim
     set guioptions=agi
-    "highlight LineNr guibg=#141414                          " Highlight background of the line number gutter the tomorrow-night
     set lines=999 columns=9999
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
         compiler gcc
     elseif has("macunix")
-        " Put first mac because otherwise enter in the unix option
         set guifont=Menlo\ for\ Powerline:h14
-        " Transparencia solo en macvim
         set transparency=0
     endif
 else
-    "* the separator used on the left side
-    "let g:airline_left_sep=''
-    "* the separator used on the right side
-    "let g:airline_right_sep=''
-    " highlight LineNr ctermfg=darkcyan
-    " hi CursorLine term=none cterm=none ctermbg=3          " adjust color for terminal
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
     elseif has("macunix")
@@ -114,10 +60,16 @@ else
     endif
 endif
 
-" Favs: Tomorrow-Night, Tomorrow, solarized (:set bg=dark, :set bg=light)
 colorscheme Tomorrow
 
 " CtrlP -----------------------------------------------------------------------
+silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
+silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
+silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
+silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
+silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
+
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
     \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
@@ -129,32 +81,15 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
 
 " MAPPINGS --------------------------------------------------------------------
-" Mapleader
 let mapleader = ","
 
-" Space will toggle folds!
 nnoremap <space> za
-
-" Swap ; and :  Convenient.
-"nnoremap ; :
-"nnoremap : ;
 
 " Re-hardwrap paragraph of text
 nnoremap <leader>q gqip
 
-"This last mapping lets me quickly open up my ~/.vimrc file in a vertically split window so I can add new things to it on the fly.
 nnoremap <leader>se <C-w><C-v><C-l>:e $MYVIMRC<CR>
-
-" Quickly reload the vimrc file
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" CtrlP Config --------------------------------------------------
-silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
-silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
-silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
-silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
-silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
 
 " remove whitespaces before writing a file
 function! <SID>RemoveWhitespaces()
@@ -170,34 +105,14 @@ endfunction
 " CTAGS
 silent! nnoremap <silent> TT :!~/.vim/utils/ctags-proj.sh<CR>
 
-"
-" Custom key mapping
-" ------------------
-"
-"map <C-p> <nop>
 
 " BUFFERS MAPPING ----------------------------------------
-" Leader + Tab: Switching to the previously edited buffer
 map <Leader><Tab> :b#<CR>
-" Leader + n: New buffer
 map <Leader>n :new<CR>
-" NOTE: Se utiliza tpope/unimpared [b y ]b
-"map <C-B>p :bprev<CR>
-"map <C-b>n :bnext<CR>
-" Close current buffer
 map <Leader>d :bd<CR>
-" map <Leader>d :q<CR>
-" Close current buffer without saving
 map <Leader>D :bd!<CR>
-" Close and save current buffer
 map <Leader>W :w \| bd<CR>
-" Hide current buffer
 map <Leader>h :hide<CR>
-
-" New line down and up the cursor
-" Handled by de unimpared.vim
-"nnoremap <C-J> mao<Esc>`a
-"nnoremap <C-K> maO<Esc>`a
 
 " NerdTree {
     map <Leader>l :NERDTreeToggle<CR>
@@ -219,27 +134,19 @@ map <Leader>h :hide<CR>
 cmap w!! %!sudo tee > /dev/null %
 
 " Airline config---------------------------------------- 
-" the ✹ trailing[99] is part of the whitespace extension. you can disable it with
+let g:airline_powerline_fonts = 1
 let g:airline_section_warning=''
-" Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-" Show the buffer number
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Markdown fixes---------------------------------------- 
-" Para detectar los md como markdown y no como modula2 que es el default, lo
-" hace auto el plugin tpope/markdown.vim
-"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " GitHub Flavored Markdown
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
     autocmd FileType markdown,vim let b:loaded_delimitMate=1
 augroup END
-
-" Add the following line to your .vimrc to disable folding
 let g:vim_markdown_folding_disabled=1
 
 let delimitMate_expand_cr = 1
@@ -352,9 +259,6 @@ vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 "inoremap <esc> <nop>
 inoremap jk <Esc>
 inoremap kj <Esc>
-"inoremap jj <Esc>
-"inoremap kl <Esc>
-"inoremap lk <Esc>
 
 " Easy window nav
 " NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS
@@ -367,7 +271,6 @@ inoremap kj <Esc>
 let g:instant_markdown_autostart = 0
 
 " Tagbar Plugin
-"nnoremap <silent> <Leader>] :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " Delete a word to the right
@@ -379,7 +282,6 @@ nnoremap k gk
 
 " DelimitMate
 let g:delimitMate_expand_cr = 1
-"let g:delimitMate_expand_space = 1
 
 " Copy the path of the actual file
 function! MeGetFilePath()

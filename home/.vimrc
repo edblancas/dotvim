@@ -38,6 +38,8 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 set pastetoggle=<F2>
 
+set shell=zsh
+
 " Look and feel
 set t_Co=256
 
@@ -99,7 +101,7 @@ map <Leader>W :w \| bd<CR>
 map <Leader>h :hide<CR>
 
 nnoremap <leader>se <C-w><C-v><C-l>:e $MYVIMRC<CR>
-nnoremap <Leader>sb ~<C-w><C-v><C-l>:e ~/.vim/utils/bundles.vim<CR>
+nnoremap <Leader>sb <C-w><C-v><C-l>:e ~/.vim/utils/bundles.vim<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Fix the & command in normal+visual modes {{{2
@@ -153,13 +155,6 @@ function! MeGetFilePath()
     let @* = expand("%:p")
 endfunction
 
-" Easy window nav
-" NOTE: REVISAR QUE NO TENGO CONFLICTOS CON OTROS MAPPINGS
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
-
 " Force yourself to stop using arrow keys
 "noremap   <Up>     <Nop>
 "noremap   <Down>   <Nop>
@@ -169,22 +164,6 @@ endfunction
 "inoremap  <Down>   <Nop>
 "inoremap  <Left>   <Nop>
 "inoremap  <Right>  <Nop>
-
-"map up/down arrow keys to unimpaired commands
-"NO FUNCIONAN EN LA TERMINAL EN MAC
-"nmap <Up> [e
-"nmap <Down> ]e
-"vmap <Up> [egv
-"vmap <Down> ]egv
-
-""map left/right arrow keys to indendation
-"nmap <Left> <<
-"nmap <Right> >>
-"vmap <Left> <gv
-"vmap <Right> >gv
-
-" set shell lo hace vim-sensible lo ponen en bash hay que ver para ponerlo en
-" zsh
 
 " Experimental mappings {{{2
 nnoremap g" /\v<<C-r>"><CR>
@@ -214,7 +193,7 @@ nnoremap  <Plug>TransposeCharacters xp
 \:call repeat#set("\<Plug>TransposeCharacters")<CR>
 
 " Plugin configuration {{{1
-" Markdown {{{2 
+" Markdown {{{2
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown

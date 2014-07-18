@@ -60,7 +60,7 @@ if has("gui_running")
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
         compiler gcc
-    eMaÿClseif has("macunix")
+    elseif has("macunix")
         set guifont=Menlo\ for\ Powerline:h14
         set transparency=0
     endif

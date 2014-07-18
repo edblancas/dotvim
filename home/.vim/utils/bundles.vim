@@ -73,6 +73,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'Shougo/context_filetype.vim'
+Plugin 'svermeulen/vim-easyclip'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

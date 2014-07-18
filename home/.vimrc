@@ -72,7 +72,8 @@ else
     endif
 endif
 
-colorscheme Tomorrow
+colorscheme solarized
+set background=dark
 
 " Mappings {{{1
 " Override defaults {{{2

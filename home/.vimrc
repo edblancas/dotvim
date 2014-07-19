@@ -82,6 +82,7 @@ highlight Folded cterm=bold
 highlight Constant cterm=underline
 highlight Statement cterm=bold
 "highlight Comment cterm=italic
+highlight MarkdownH1 cterm=bold
 
 " Mappings {{{1
 " Override defaults {{{2

@@ -1,5 +1,6 @@
 " vim: nowrap fdm=marker
 source ~/.vim/utils/bundles.vim
+source ~/.vim/utils/watch_for_changes.vim
 
 " Personal preferences not set by sensible.vim
 set hidden

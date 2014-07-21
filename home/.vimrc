@@ -246,6 +246,8 @@ let g:ctrlp_follow_symlinks = 1
 
 let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
 
+let g:ctrlp_working_path_mode = 0
+
 " Airline {{{2
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning=''

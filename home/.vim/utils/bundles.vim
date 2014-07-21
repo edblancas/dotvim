@@ -16,7 +16,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 
 Plugin 'Shougo/vimshell.vim'

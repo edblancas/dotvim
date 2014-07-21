@@ -214,18 +214,18 @@ let g:vim_markdown_folding_disabled=1
 let g:instant_markdown_autostart = 0
 
 " NerdTree {{{2
-    map <Leader>l :NERDTreeToggle<CR>
-    map <Leader>L :NERDTree<CR>
-    map <leader>nt :NERDTreeFind<CR>
+    "map <Leader>l :NERDTreeToggle<CR>
+    "map <Leader>L :NERDTree<CR>
+    "map <leader>nt :NERDTreeFind<CR>
 
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let NERDTreeChDirMode=2
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeMouseMode=2
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
-    let g:nerdtree_tabs_open_on_gui_startup=0
+    "let NERDTreeShowBookmarks=1
+    "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+    "let NERDTreeChDirMode=2
+    "let NERDTreeQuitOnOpen=1
+    "let NERDTreeMouseMode=2
+    "let NERDTreeShowHidden=1
+    "let NERDTreeKeepTreeInNewTab=1
+    "let g:nerdtree_tabs_open_on_gui_startup=0
 
 " CtrlP {{{2
 silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>

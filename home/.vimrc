@@ -82,8 +82,9 @@ highlight CursorLineNr cterm=bold
 highlight Folded cterm=bold
 highlight Constant cterm=underline
 highlight Statement cterm=bold
-"highlight Comment cterm=italic
 highlight MarkdownH1 cterm=bold
+highlight Error ctermfg=255
+highlight ErrorMsg ctermfg=255
 
 " Mappings {{{1
 " Override defaults {{{2

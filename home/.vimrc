@@ -73,18 +73,18 @@ else
     endif
 endif
 
-colorscheme Tomorrow
-set background=light
+colorscheme solarized
+set background=dark
 
-" Tweak colorscheme
-highlight LineNr cterm=bold
-highlight CursorLineNr cterm=bold
-highlight Folded cterm=bold
-highlight Constant cterm=underline
-highlight Statement cterm=bold
-highlight MarkdownH1 cterm=bold
-highlight Error ctermfg=255
-highlight ErrorMsg ctermfg=255
+" Tweak colorscheme for a preattier tomorrow in command line
+"highlight LineNr cterm=bold
+"highlight CursorLineNr cterm=bold
+"highlight Folded cterm=bold
+"highlight Constant cterm=underline
+"highlight Statement cterm=bold
+"highlight MarkdownH1 cterm=bold
+"highlight Error ctermfg=255
+"highlight ErrorMsg ctermfg=255
 
 " Mappings {{{1
 " Override defaults {{{2

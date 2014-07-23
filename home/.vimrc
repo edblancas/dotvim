@@ -153,6 +153,8 @@ silent! nnoremap <silent> TT :!~/.vim/utils/ctags-proj.sh<CR>
 "inoremap <esc> <nop>
 inoremap jk <Esc>
 inoremap kj <Esc>
+inoremap JK <Esc>
+inoremap KJ <Esc>
 
 " Custom mappings and functions {{{2
 " Delete a word to the right

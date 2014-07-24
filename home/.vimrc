@@ -293,30 +293,18 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-" <ESC> takes you out of insert mode
-" NOTE: Causa problemas con las flechas en insert mode, aunque al
-" parecer desactivandolo funciona igual que activado
-"inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
-" <CR> accepts first, then sends the <CR>
-"inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-" <CR> acepta la seleccion
-"imap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : '<Plug>delimitMateCR'
-imap <expr> <CR> pumvisible() ? "\<C-y>" : "<Plug>delimitMateCR"
-" <Down> and <Up> cycle like <Tab> and <S-Tab>
+imap <expr> <CR> pumvisible() ?  neocomplete#smart_close_popup() . "\<CR>" : "<Plug>delimitMateCR"
 inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
-" Jump up and down the list
 inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
 inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-" <TAB>: completion.
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
+" TODO: EL TAB FALLA CUANDO ES UN NEOSNIPPET
 " Courtesy of Matteo Cavalleri
 function! CleverTab()
     if pumvisible()
-        "return "\<C-n>"
-        return "\<C-y>"
+        return "\<C-n>"
+        "return "\<C-y>" . neocomplete#close_popup()
     endif
     let substr = strpart(getline('.'), 0, col('.') - 1)
     let substr = matchstr(substr, '[^ \t]*$')

@@ -289,44 +289,14 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" These two lines conflict with the default digraph mapping of <C-K>
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-imap <expr> <CR> pumvisible() ?  neocomplete#smart_close_popup() . "\<CR>" : "<Plug>delimitMateCR"
-inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-" TODO: EL TAB FALLA CUANDO ES UN NEOSNIPPET
-" Courtesy of Matteo Cavalleri
-function! CleverTab()
-    if pumvisible()
-        return "\<C-n>"
-        "return "\<C-y>" . neocomplete#close_popup()
-    endif
-    let substr = strpart(getline('.'), 0, col('.') - 1)
-    let substr = matchstr(substr, '[^ \t]*$')
-    if strlen(substr) == 0
-        " nothing to match on empty string
-        return "\<Tab>"
-    else
-        " existing text matching
-        if neosnippet#expandable_or_jumpable()
-            return "\<Plug>(neosnippet_expand_or_jump)"
-        else
-            return neocomplete#start_manual_complete()
-        endif
-    endif
-endfunction
-
-imap <expr> <Tab> CleverTab()
-
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
 " Tabularize {{{2

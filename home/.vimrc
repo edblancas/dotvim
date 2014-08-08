@@ -73,8 +73,8 @@ else
     endif
 endif
 
-colorscheme solarized
-set background=dark
+colorscheme Tomorrow
+set background=light
 
 " Tweak colorscheme for a preattier tomorrow in command line
 "highlight LineNr cterm=bold
@@ -192,16 +192,6 @@ function! EchoTags()
   echo join(split(&tags, ","), "\n")
 endfunction
 
-let g:EasyClipUseSubstituteDefaults = 1
-nmap <silent> gs <plug>SubstituteOverMotionMap
-nmap gss <plug>SubstituteLine
-xmap gs p
-
-let g:EasyClipUseCutDefaults = 0
-nmap x <Plug>MoveMotionPlug
-xmap x <Plug>MoveMotionXPlug
-nmap xx <Plug>MoveMotionLinePlug
-
 nmap cp <Plug>TransposeCharacters
 nnoremap  <Plug>TransposeCharacters xp
 \:call repeat#set("\<Plug>TransposeCharacters")<CR>
@@ -304,6 +294,10 @@ let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
+" neosnippet {{{2
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
 " Tabularize {{{2
 nmap <Leader>a& :Tabularize /&<CR>
 vmap <Leader>a& :Tabularize /&<CR>
@@ -323,3 +317,13 @@ nnoremap <F5> :GundoToggle<CR>
 
 " Tagbar {{{2
 nmap <F8> :TagbarToggle<CR>
+
+" EasyClip {{{2
+nmap <silent> gs <plug>SubstituteOverMotionMap
+nmap gss <plug>SubstituteLine
+xmap gs p
+
+let g:EasyClipUseCutDefaults = 0
+nmap x <Plug>MoveMotionPlug
+xmap x <Plug>MoveMotionXPlug
+nmap xx <Plug>MoveMotionLinePlug

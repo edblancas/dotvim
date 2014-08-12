@@ -55,6 +55,8 @@ let &showbreak = "↳"
 set breakindent
 set breakindentopt=shift:4,sbr
 
+set listchars=tab:▸–,trail:·,nbsp:¬
+
 if has("gui_running")
     set guioptions=agi
     set lines=999 columns=9999
@@ -73,7 +75,7 @@ else
     endif
 endif
 
-colorscheme Tomorrow
+colorscheme solarized
 set background=light
 
 " Tweak colorscheme for a preattier tomorrow in command line

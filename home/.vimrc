@@ -38,10 +38,11 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 set pastetoggle=<F2>
+nnoremap <silent> <F2> :set invpaste paste?<CR>
+set noshowmode
 
 set shell=zsh
 
-" Look and feel
 set t_Co=256
 
 set encoding=utf-8
@@ -56,6 +57,8 @@ set breakindent
 set breakindentopt=shift:4,sbr
 
 set listchars=tab:▸–,trail:·,nbsp:¬
+
+set vb t_vb=
 
 if has("gui_running")
     set guioptions=agi
@@ -77,6 +80,7 @@ endif
 
 colorscheme solarized
 set background=light
+let g:solarized_visibility = "low" 
 
 " Tweak colorscheme for a preattier tomorrow in command line
 "highlight LineNr cterm=bold
@@ -243,6 +247,11 @@ let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
 
 let g:ctrlp_working_path_mode = 0
 
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
 " Airline {{{2
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning=''
@@ -329,3 +338,8 @@ let g:EasyClipUseCutDefaults = 0
 nmap x <Plug>MoveMotionPlug
 xmap x <Plug>MoveMotionXPlug
 nmap xx <Plug>MoveMotionLinePlug
+
+" ag.vim & ack.vim {{{2
+let g:ackprg = 'ag --nogroup --nocolor --column'
+nnoremap K :AckWindow! "\b<C-R><C-W>\b"<CR>
+nnoremap \ :Ack<SPACE>

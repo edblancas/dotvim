@@ -63,6 +63,7 @@ set vb t_vb=
 if has("gui_running")
     set guioptions=agi
     set lines=999 columns=9999
+    set guioptions+=e   " For tabs GUI
     if has('unix') && !has('macunix') && !has('win32unix')
         set guifont=Menlo\ for\ Powerline\ 10
         compiler gcc
@@ -78,7 +79,7 @@ else
     endif
 endif
 
-colorscheme solarized
+colorscheme Tomorrow
 set background=light
 let g:solarized_visibility = "low" 
 
@@ -232,7 +233,7 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
-silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
+silent! nnoremap <unique> <silent> <Leader>r :CtrlPMRUFiles<CR>
 silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
 
 let g:ctrlp_custom_ignore = {
@@ -240,11 +241,10 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
     \ 'link': 'some_bad_symbolic_links',
     \ }
+
 let g:ctrlp_map = ''
 let g:ctrlp_follow_symlinks = 1
-
 let g:ctrlp_extensions = ['buffertag', 'bookmarkdir']
-
 let g:ctrlp_working_path_mode = 0
 
 if executable('ag')
@@ -252,12 +252,14 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+let g:ctrlp_match_window = 'max:30'
+
 " Airline {{{2
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning=''
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_inactive_collapse=0
 
 let g:airline_theme_patch_func = 'AirlineThemePatch'
@@ -309,22 +311,19 @@ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
-" Tabularize {{{2
-nmap <Leader>a& :Tabularize /&<CR>
-vmap <Leader>a& :Tabularize /&<CR>
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a:: :Tabularize /:\zs<CR>
-vmap <Leader>a:: :Tabularize /:\zs<CR>
-nmap <Leader>a, :Tabularize /,<CR>
-vmap <Leader>a, :Tabularize /,<CR>
-nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-
-" Gundo {{{2
-nnoremap <F5> :GundoToggle<CR>
+" Tabular {{{2
+" Invoke by <leader>= alignment-character
+nnoremap <silent> <leader>= :call g:Tabular(1)<CR>
+xnoremap <silent> <leader>= :call g:Tabular(0)<CR>
+function! g:Tabular(ignore_range) range
+    let c = getchar()
+    let c = nr2char(c)
+    if a:ignore_range == 0
+        exec printf('%d,%dTabularize /%s', a:firstline, a:lastline, c)
+    else
+        exec printf('Tabularize /%s', c)
+    endif
+endfunction
 
 " Tagbar {{{2
 nmap <F8> :TagbarToggle<CR>
@@ -342,4 +341,5 @@ nmap xx <Plug>MoveMotionLinePlug
 " ag.vim & ack.vim {{{2
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap K :AckWindow! "\b<C-R><C-W>\b"<CR>
-nnoremap \ :Ack<SPACE>
+nnoremap \ :AckWindow!<Space>
+nnoremap <Leader>a :Ack<Space>

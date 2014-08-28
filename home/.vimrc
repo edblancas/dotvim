@@ -3,85 +3,51 @@ source ~/.vim/utils/bundles.vim
 source ~/.vim/utils/watch_for_changes.vim
 
 " Personal preferences not set by sensible.vim
+set noshowmode " Por que vim-airline muestra el modo en el que estamos
 set hidden
-
 set foldmethod=syntax
-
-filetype on
-filetype plugin on
-filetype indent on
-syntax enable
-
 set smartindent
-
 set expandtab
-set shiftwidth=4
 set softtabstop=4
-
+set formatoptions-=t    " No autowrap long lines
 set wildmode=list:longest,full
-
-set mouse=a
-
-set number
-
 set ignorecase
 set smartcase
-
+set number
 set hlsearch
-
-set showmatch
-
+set wrap
 set nobackup
+set nowritebackup
 set noswapfile
-
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set mouse=a
+set showmatch
+set cursorline
+set encoding=utf-8
+set colorcolumn=100
+set vb t_vb=
 
 set pastetoggle=<F2>
 nnoremap <silent> <F2> :set invpaste paste?<CR>
-set noshowmode
 
-set shell=zsh
+set laststatus=2
+"set statusline=[%n]\ %f\ %m%y%r%h%w\ %{SL('fugitive#statusline')}\ %=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P
+"hi StatusLine gui=bold guibg=Black guifg=White
+"hi StatusLineNC gui=bold guibg=DarkGray guifg=White
 
-set t_Co=256
-
-set encoding=utf-8
-
-set colorcolumn=100
-
-set cul
-
-let &showbreak = "↳"
-
-set breakindent
-set breakindentopt=shift:4,sbr
-
-set listchars=tab:▸–,trail:·,nbsp:¬
-
-set vb t_vb=
-
-if has("gui_running")
-    set guioptions=agi
-    set lines=999 columns=9999
-    set guioptions+=e   " For tabs GUI
-    if has('unix') && !has('macunix') && !has('win32unix')
-        set guifont=Menlo\ for\ Powerline\ 10
-        compiler gcc
-    elseif has("macunix")
-        set guifont=Menlo\ for\ Powerline:h14
-        set transparency=0
-    endif
-else
-    if has('unix') && !has('macunix') && !has('win32unix')
-        set guifont=Menlo\ for\ Powerline\ 10
-    elseif has("macunix")
-        set guifont=Menlo\ for\ Powerline:h14
-    endif
-endif
-
+" Color Scheme
 colorscheme Tomorrow
 set background=light
 let g:solarized_visibility = "low" 
+
+" Otas opciones
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set shell=zsh
+set t_Co=256
+let &showbreak = "↳"
+set breakindent
+set breakindentopt=shift:4,sbr
+set listchars=tab:▸–,trail:·,nbsp:¬
 
 " Tweak colorscheme for a preattier tomorrow in command line
 "highlight LineNr cterm=bold
@@ -96,11 +62,8 @@ let g:solarized_visibility = "low"
 " Mappings {{{1
 " Override defaults {{{2
 let mapleader = ","
-
 nnoremap Q <Nop>
-
 nnoremap <space> za
-
 nnoremap j gj
 nnoremap k gk
 
@@ -213,20 +176,6 @@ augroup END
 let g:vim_markdown_folding_disabled=1
 
 let g:instant_markdown_autostart = 0
-
-" NerdTree {{{2
-    "map <Leader>l :NERDTreeToggle<CR>
-    "map <Leader>L :NERDTree<CR>
-    "map <leader>nt :NERDTreeFind<CR>
-
-    "let NERDTreeShowBookmarks=1
-    "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    "let NERDTreeChDirMode=2
-    "let NERDTreeQuitOnOpen=1
-    "let NERDTreeMouseMode=2
-    "let NERDTreeShowHidden=1
-    "let NERDTreeKeepTreeInNewTab=1
-    "let g:nerdtree_tabs_open_on_gui_startup=0
 
 " CtrlP {{{2
 silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>

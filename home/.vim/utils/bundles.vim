@@ -1,4 +1,4 @@
-" vim: nowrap fdm=marker
+" vim: fdm=marker
 set nocompatible              
 filetype off                 
 
@@ -39,11 +39,13 @@ Plugin 'honza/vim-snippets'
 " }}}
 
 " COLOR SCHEMES {{{1
+Plugin 'AfterColors.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'nelstrom/vim-mac-classic-theme'
 
 " }}}
 
@@ -58,7 +60,7 @@ Plugin 'elzr/vim-json'
 " OTHER STUFF {{{1
 Plugin 'tpope/vim-abolish'  "unix only stuff
 Plugin 'tpope/vim-eunuch'   "search and stuff
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 "Plugin 'vim-scripts/ShowMarks'
 
 Plugin 'rizzatti/funcoo.vim'
@@ -70,7 +72,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'wikitopian/hardmode'
 Plugin 'majutsushi/tagbar'
-"Plugin 'mbbill/undotree'
+Plugin 'mbbill/undotree'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'Lokaltog/vim-easymotion'

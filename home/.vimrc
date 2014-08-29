@@ -1,9 +1,10 @@
-" vim: nowrap fdm=marker
+" vim: fdm=marker
+
 source ~/.vim/utils/bundles.vim
 source ~/.vim/utils/watch_for_changes.vim
 
 " Personal preferences not set by sensible.vim
-set noshowmode " Por que vim-airline muestra el modo en el que estamos
+set showmode " Por que vim-airline muestra el modo en el que estamos
 set hidden
 set foldmethod=syntax
 set smartindent
@@ -29,16 +30,6 @@ set vb t_vb=
 set pastetoggle=<F2>
 nnoremap <silent> <F2> :set invpaste paste?<CR>
 
-set laststatus=2
-"set statusline=[%n]\ %f\ %m%y%r%h%w\ %{SL('fugitive#statusline')}\ %=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P
-"hi StatusLine gui=bold guibg=Black guifg=White
-"hi StatusLineNC gui=bold guibg=DarkGray guifg=White
-
-" Color Scheme
-colorscheme Tomorrow
-set background=light
-let g:solarized_visibility = "low" 
-
 " Otas opciones
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -49,15 +40,13 @@ set breakindent
 set breakindentopt=shift:4,sbr
 set listchars=tab:▸–,trail:·,nbsp:¬
 
-" Tweak colorscheme for a preattier tomorrow in command line
-"highlight LineNr cterm=bold
-"highlight CursorLineNr cterm=bold
-"highlight Folded cterm=bold
-"highlight Constant cterm=underline
-"highlight Statement cterm=bold
-"highlight MarkdownH1 cterm=bold
-"highlight Error ctermfg=255
-"highlight ErrorMsg ctermfg=255
+" Color Scheme
+colorscheme Tomorrow
+"set background=light
+"let g:solarized_visibility = "low" 
+
+set laststatus=2
+set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}%=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P\  
 
 " Mappings {{{1
 " Override defaults {{{2
@@ -292,3 +281,18 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap K :AckWindow! "\b<C-R><C-W>\b"<CR>
 nnoremap \ :AckWindow!<Space>
 nnoremap <Leader>a :Ack<Space>
+
+" UndoTree {{{2
+nnoremap <F5> :UndotreeToggle<cr>
+
+" Commands {{{1
+" From tpope .vimrc
+if has("eval")
+  function! SL(function)
+      if exists('*'.a:function)
+          return ' '.call(a:function,[])
+      else
+          return ''
+      endif
+  endfunction
+endif

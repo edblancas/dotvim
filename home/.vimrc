@@ -46,7 +46,7 @@ colorscheme Tomorrow
 "let g:solarized_visibility = "low" 
 
 set laststatus=2
-set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}%=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P\  
+set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P\  
 
 " Mappings {{{1
 " Override defaults {{{2

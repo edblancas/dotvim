@@ -46,7 +46,10 @@ colorscheme Tomorrow
 "let g:solarized_visibility = "low" 
 
 set laststatus=2
-set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %P\  
+set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%-35.(%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %)%P
+
+" Para los logs
+au BufRead,BufNewFile *.log set filetype=text
 
 " Mappings {{{1
 " Override defaults {{{2
@@ -192,6 +195,8 @@ endif
 
 let g:ctrlp_match_window = 'max:30'
 
+call ctrlp_bdelete#init()
+
 " Airline {{{2
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning=''
@@ -267,16 +272,16 @@ endfunction
 nmap <F8> :TagbarToggle<CR>
 
 " EasyClip {{{2
-nmap <silent> gs <plug>SubstituteOverMotionMap
-nmap gss <plug>SubstituteLine
-xmap gs p
+"nmap <silent> gs <plug>SubstituteOverMotionMap
+"nmap gss <plug>SubstituteLine
+"xmap gs p
+"
+"let g:EasyClipUseCutDefaults = 0
+"nmap x <Plug>MoveMotionPlug
+"xmap x <Plug>MoveMotionXPlug
+"nmap xx <Plug>MoveMotionLinePlug
 
-let g:EasyClipUseCutDefaults = 0
-nmap x <Plug>MoveMotionPlug
-xmap x <Plug>MoveMotionXPlug
-nmap xx <Plug>MoveMotionLinePlug
-
-" ag.vim & ack.vim {{{2
+" ag & ack.vim {{{2
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap K :AckWindow! "\b<C-R><C-W>\b"<CR>
 nnoremap \ :AckWindow!<Space>

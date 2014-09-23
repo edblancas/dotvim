@@ -15,15 +15,17 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Raimondi/delimitMate'
-Plugin 'svermeulen/vim-easyclip'
 Plugin 'godlygeek/tabular'
 Plugin 'chrisbra/NrrwRgn'
+Plugin 'kien/ctrlp.vim'
+Plugin 'd11wtq/ctrlp_bdelete.vim'
+"Plugin 'svermeulen/vim-easyclip'
 
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-function'
 
 Plugin 'mileszs/ack.vim'
 "Plugin 'rking/ag.vim'
@@ -76,6 +78,8 @@ Plugin 'mbbill/undotree'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'Lokaltog/vim-easymotion'
+
+Plugin 'derekwyatt/vim-scala'
 
 " }}}
 

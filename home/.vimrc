@@ -282,7 +282,8 @@ nmap <F8> :TagbarToggle<CR>
 "nmap xx <Plug>MoveMotionLinePlug
 
 " ag & ack.vim {{{2
-let g:ackprg = 'ag --nogroup --nocolor --column'
+"let g:ackprg = 'ag -H --nogroup --nocolor --column'
+
 nnoremap K :AckWindow! "\b<C-R><C-W>\b"<CR>
 nnoremap \ :AckWindow!<Space>
 nnoremap <Leader>a :Ack<Space>

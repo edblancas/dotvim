@@ -28,7 +28,6 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-function'
 
 Plugin 'mileszs/ack.vim'
-"Plugin 'rking/ag.vim'
 
 " }}}
 

@@ -62,7 +62,7 @@ Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-abolish'  "unix only stuff
 Plugin 'tpope/vim-eunuch'   "search and stuff
 "Plugin 'bling/vim-airline'
-"Plugin 'ShowMarks'
+Plugin 'bootleq/ShowMarks'
 
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'

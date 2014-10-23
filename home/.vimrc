@@ -7,9 +7,7 @@ source ~/.vim/utils/watch_for_changes.vim
 set showmode " Por que vim-airline muestra el modo en el que estamos
 set hidden
 set foldmethod=syntax
-set smartindent
-set expandtab
-set softtabstop=4
+set tabstop=4 expandtab shiftwidth=4
 set formatoptions-=t    " No autowrap long lines
 set wildmode=list:longest,full
 set ignorecase
@@ -29,6 +27,8 @@ set vb t_vb=
 
 set pastetoggle=<F2>
 nnoremap <silent> <F2> :set invpaste paste?<CR>
+" Yank from " to * register an viceversa
+set clipboard=unnamed
 
 " Otas opciones
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -50,6 +50,9 @@ set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%-35.(%{&fenc
 
 " Para los logs
 au BufRead,BufNewFile *.log set filetype=text
+" Indent xml
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+let g:xml_syntax_folding=1
 
 " Mappings {{{1
 " Override defaults {{{2
@@ -237,8 +240,14 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <expr> <CR> pumvisible() ? "\<CR>" : "\<Plug>delimitMateCR"
-imap <expr> <TAB> pumvisible() ? "\<c-y>" . neocomplete#close_popup() : "\<TAB>"
+imap <expr> <TAB> pumvisible() ? neocomplete#close_popup() : "\<TAB>"
+inoremap <expr> <ESC>  pumvisible() ? neocomplete#cancel_popup() : "\<ESC>"
+inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+          \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+          \ neocomplete#cancel_popup() . '<CR>'
+inoremap <expr> <BS> delimitMate#WithinEmptyPair() ?
+          \ "\<C-R>=delimitMate#BS()\<CR>" :
+          \ neocomplete#smart_close_popup() . '<BS>'
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -290,6 +299,10 @@ nnoremap <Leader>a :Ack<Space>
 
 " UndoTree {{{2
 nnoremap <F5> :UndotreeToggle<cr>
+
+" delimitMate {{{2
+let delimitMate_expand_cr = 1
+
 
 " Commands {{{1
 " From tpope .vimrc

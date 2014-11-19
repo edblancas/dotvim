@@ -177,7 +177,7 @@ silent! nnoremap <unique> <silent> <Leader>p :CtrlP<CR>
 silent! nnoremap <unique> <silent> <Leader>b :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <Leader>T :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <Leader>t :CtrlPBufTag<CR>
-silent! nnoremap <unique> <silent> <Leader>m :CtrlPMRUFiles<CR>
+silent! nnoremap <unique> <silent> <Leader>r :CtrlPMRUFiles<CR>
 silent! nnoremap <unique> <silent> <Leader>o :CtrlPBookmarkDir<CR>
 
 let g:ctrlp_custom_ignore = {
@@ -302,6 +302,10 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 " delimitMate {{{2
 let delimitMate_expand_cr = 1
+
+" ShowMarks {{{2
+let g:showmarks_auto_toggle = 0
+let g:showmarks_ignore_type = "h"
 
 
 " Commands {{{1

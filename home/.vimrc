@@ -23,6 +23,8 @@ set showmatch
 set cursorline
 set encoding=utf-8
 set colorcolumn=100
+" Es el valor que toma en cuenta gq, pero lo hace automatico si se deja
+" set textwidth=100
 set vb t_vb=
 
 set pastetoggle=<F2>
@@ -49,7 +51,7 @@ set laststatus=2
 set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%-35.(%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %)%P
 
 " Para los logs
-au BufRead,BufNewFile *.log set filetype=text
+au BufRead,BufNewFile *.log* set filetype=text
 " Indent xml
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 let g:xml_syntax_folding=1
@@ -100,6 +102,7 @@ endfunction
 
 nmap <silent> <S-Space> :call Preserve("%s/\\s\\+$//e")<CR>
 
+" Reformat paragraph to textwidth
 nnoremap <leader>q gqip
 
 " Visual line repeat {{{2
@@ -135,14 +138,14 @@ function! MeGetFilePath()
 endfunction
 
 " Force yourself to stop using arrow keys
-"noremap   <Up>     <Nop>
-"noremap   <Down>   <Nop>
-"noremap   <Left>   <Nop>
-"noremap   <Right>  <Nop>
-"inoremap  <Up>     <Nop>
-"inoremap  <Down>   <Nop>
-"inoremap  <Left>   <Nop>
-"inoremap  <Right>  <Nop>
+noremap   <Up>     <Nop>
+noremap   <Down>   <Nop>
+noremap   <Left>   <Nop>
+noremap   <Right>  <Nop>
+inoremap  <Up>     <Nop>
+inoremap  <Down>   <Nop>
+inoremap  <Left>   <Nop>
+inoremap  <Right>  <Nop>
 
 " Experimental mappings {{{2
 nnoremap g" /\v<<C-r>"><CR>
@@ -306,6 +309,20 @@ let delimitMate_expand_cr = 1
 " ShowMarks {{{2
 let g:showmarks_auto_toggle = 0
 let g:showmarks_ignore_type = "h"
+
+" NerdTree {{{2
+map <Leader>l :NERDTreeToggle<CR>
+map <Leader>L :NERDTree<CR>
+map <leader>nt :NERDTreeFind<CR>
+
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 
 " Commands {{{1

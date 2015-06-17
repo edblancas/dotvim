@@ -50,6 +50,9 @@ colorscheme Tomorrow
 set laststatus=2
 set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%-35.(%{&fenc==\"\"?&enc:&fenc}[%{&ff}]\ [%L,%p%%]\ [%l,%c%V]\ %)%P
 
+set showtabline=2
+set guioptions-=e
+
 " Para los logs
 au BufRead,BufNewFile *.log* set filetype=text
 " Indent xml
@@ -146,6 +149,10 @@ inoremap  <Up>     <Nop>
 inoremap  <Down>   <Nop>
 inoremap  <Left>   <Nop>
 inoremap  <Right>  <Nop>
+
+" Quit <F1> for showing the help.txt
+noremap <F1>    <Nop>
+inoremap <F1>   <Nop>
 
 " Experimental mappings {{{2
 nnoremap g" /\v<<C-r>"><CR>
@@ -323,6 +330,11 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+
+" Flagship {{{2
+" Quit the defaul showing Vim GUI server name
+let g:tabprefix=''
 
 
 " Commands {{{1

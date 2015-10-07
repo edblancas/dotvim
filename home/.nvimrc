@@ -1,7 +1,7 @@
 " vim: fdm=marker
 
-source ~/.vim/utils/bundles.vim
-source ~/.vim/utils/watch_for_changes.vim
+source ~/.nvim/utils/bundles.vim
+source ~/.nvim/utils/watch_for_changes.vim
 
 " Personal preferences not set by sensible.vim
 set showmode " Por que vim-airline muestra el modo en el que estamos
@@ -21,7 +21,8 @@ set noswapfile
 set mouse=a
 set showmatch
 set cursorline
-set encoding=utf-8
+" Not compatible with nvim?
+"set encoding=utf-8
 set colorcolumn=100
 " Es el valor que toma en cuenta gq, pero lo hace automatico si se deja
 " set textwidth=100
@@ -55,7 +56,6 @@ set statusline=[%n]\ %f\ %m%y%r%h%w%{SL('fugitive#statusline')}\ %=%-35.(%{&fenc
 " Para los logs
 au BufRead,BufNewFile *.log* set filetype=text
 " Indent xml
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 let g:xml_syntax_folding=1
 
 " Mappings {{{1
@@ -83,7 +83,7 @@ map <Leader>W :w \| bd<CR>
 map <Leader>h :hide<CR>
 
 nnoremap <leader>se <C-w><C-v><C-l>:e $MYVIMRC<CR>
-nnoremap <Leader>sb <C-w><C-v><C-l>:e ~/.vim/utils/bundles.vim<CR>
+nnoremap <Leader>sb <C-w><C-v><C-l>:e ~/.nvim/utils/bundles.vim<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Fix the & command in normal+visual modes {{{2
@@ -118,7 +118,7 @@ function! ExecuteMacroOverVisualRange()
 endfunction
 
 " Ctags {{{2
-silent! nnoremap <silent> TT :!~/.vim/utils/ctags-proj.sh<CR>
+silent! nnoremap <silent> TT :!~/.nvim/utils/ctags-proj.sh<CR>
 
 " Smash Escape {{{2
 "inoremap <esc> <nop>
@@ -228,50 +228,50 @@ function! AirlineThemePatch(palette)
 endfunction
 
 " neocomplete {{{2
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#max_list = 30
-let g:neocomplete#enable_auto_select = 1
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-            \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <expr> <TAB> pumvisible() ? neocomplete#close_popup() : "\<TAB>"
-inoremap <expr> <ESC>  pumvisible() ? neocomplete#cancel_popup() : "\<ESC>"
-inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
-          \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-          \ neocomplete#cancel_popup() . '<CR>'
-inoremap <expr> <BS> delimitMate#WithinEmptyPair() ?
-          \ "\<C-R>=delimitMate#BS()\<CR>" :
-          \ neocomplete#smart_close_popup() . '<BS>'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+"let g:acp_enableAtStartup = 0
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#enable_auto_delimiter = 1
+"let g:neocomplete#max_list = 30
+"let g:neocomplete#enable_auto_select = 1
+"
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"            \ 'default' : '',
+"            \ 'vimshell' : $HOME.'/.vimshell_hist',
+"            \ 'scheme' : $HOME.'/.gosh_completions'
+"            \ }
+"
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+"imap <C-k> <Plug>(neosnippet_expand_or_jump)
+"smap <C-k> <Plug>(neosnippet_expand_or_jump)
+"imap <expr> <TAB> pumvisible() ? neocomplete#close_popup() : "\<TAB>"
+"inoremap <expr> <ESC>  pumvisible() ? neocomplete#cancel_popup() : "\<ESC>"
+"inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+"          \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+"          \ neocomplete#cancel_popup() . '<CR>'
+"inoremap <expr> <BS> delimitMate#WithinEmptyPair() ?
+"          \ "\<C-R>=delimitMate#BS()\<CR>" :
+"          \ neocomplete#smart_close_popup() . '<BS>'
+"
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"    let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
 " neosnippet {{{2
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.nvim/bundle/vim-snippets/snippets'
 
 " Tabular {{{2
 " Invoke by <leader>= alignment-character
@@ -333,7 +333,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Flagship {{{2
 " Quit the defaul showing Vim GUI server name
-"let g:tabprefix=''
+let g:tabprefix=''
 
 
 " Commands {{{1

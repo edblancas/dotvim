@@ -1,7 +1,7 @@
 " vim: fdm=marker
 
-source ~/.nvim/utils/bundles.vim
-source ~/.nvim/utils/watch_for_changes.vim
+source ~/.config/nvim/utils/bundles.vim
+source ~/.config/nvim/utils/watch_for_changes.vim
 
 " Personal preferences not set by sensible.vim
 set showmode " Por que vim-airline muestra el modo en el que estamos

@@ -1,7 +1,7 @@
 " vim: fdm=marker
 filetype off                 
 
-set rtp+=~/.nvim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'

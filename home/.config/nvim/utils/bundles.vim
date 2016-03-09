@@ -85,7 +85,7 @@ Plugin 'mbbill/undotree'
 "Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'derekwyatt/vim-scala'
-
+Plugin 'udalov/kotlin-vim'
 " }}}
 
 call vundle#end()            

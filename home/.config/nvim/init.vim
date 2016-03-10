@@ -27,6 +27,7 @@ set colorcolumn=100
 " Es el valor que toma en cuenta gq, pero lo hace automatico si se deja
 " set textwidth=100
 set vb t_vb=
+set scrolloff=3
 
 set pastetoggle=<F2>
 nnoremap <silent> <F2> :set invpaste paste?<CR>
